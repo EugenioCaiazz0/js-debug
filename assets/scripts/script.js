@@ -16,41 +16,63 @@
 
 
 // ESERCIZIO 1
-for (let i = 0; i > 5; i++) {
+for (let i = 0; /*i > 5*/ i < 5 ; i++) {
     console.log(i);
 }
+
+/*
+1. il codice stampa un indice per un ciclo che va da 0 a 4
+2. nessun errore di sintassi
+3. la condizione data è impossibile perchè i = 0 contrasta con i > 5
+*/
 
 
 // ESERCIZIO 2
 function addIfEven(num) {
-    if (num % 2 = 0) {
+    if /*(num % 2  =  0)*/ (num % 2 == 0 ) {
         return num + 5;
     }
-    return num;
+    /*return num;*/
 }
-
+/*
+1. il codice restituisce la somma di un numero dato + 5 se il numero è pari
+2. la sintassi è sbagliata perchè un solo `=` è operatore di assegnamento
+3.  il secondo return è ridondante 
+*/
 
 // ESERCIZIO 3
 function loopToFive() {
-    for (let i = 0, i < 5, i++) {
+    for /*(let i = 0, i < 5, i++)*/(let i = 0; i < 5; i++)  {
         console.log(i);
     }
 }
-
+/*
+1. il codice stampa un indice che va da 0 a 4
+2. va messo ; dopo le operazioni e non ,
+3. logica corretta
+*/
 
 // ESERCIZIO 4 (suggerimento: ci sono 7 errori)
-function displayEvenNumbers() {
-    let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+function displayEvenNumbers(array) {
     let evenNumbers = [];
-    for (let i = 0; i < numbers.length - 1; i++;) {
-        if (numbers % 2 = 0); {
-            evenNumbers.push(i);
+    for (let i = 0; i < array.length - 1; i++) {
+        if (array[i] % 2 == 0); {
+            evenNumbers.push(array[i]);
         }
-        return evenNumbers;
     }
+    console.log(evenNumbers);
+    return evenNumbers;
 }
-displayEvenNumbers(); // dovrebbe restituire [2,4,6,8]
+displayEvenNumbers(numbers); // dovrebbe restituire [2,4,6,8]
 
+/*
+1. il codice ritorna i numeri pari di un array dato
+2 e 3. ho spostato numbers al di fuori della funzione altrimenti la funzione è sostanzialmente inutile perchè potrebbe agire solo su numbers,
+  alla funzione ho inserito il parametro da ritornare
+  a riga 59 non va `;` dopo i++, poi a riga 60 serve il `==` e va chiamato l'indice di numbers con [i], 
+ il push va fatto all'elemento dell'array e non all'indice e infine ho spostato il return fuori dal for come ultima operazione della funzione
+*/
 
 
 /*2
@@ -81,6 +103,12 @@ function checkAge() {
 }
 checkAge();
 
+/*
+1. 
+2. 
+3. 
+*/
+
 // ESERCIZIO 2
 function printColorsNumber() {
     const colors = ['blue', 'red', 'yellow', 'green', 'black'];
@@ -88,6 +116,11 @@ function printColorsNumber() {
 }
 printColorsNumber();
 
+/*
+1. 
+2. 
+3. 
+*/
 
 // ESERCIZIO 3
 function addNumbers() {
@@ -98,6 +131,11 @@ function addNumbers() {
 }
 addNumbers();
 
+/*
+1. 
+2. 
+3. 
+*/
 
 // ESERCIZIO 4
 function checkAccess() {
@@ -118,6 +156,11 @@ function checkAccess() {
 }
 checkAccess();
 
+/*
+1. 
+2. 
+3. 
+*/
 
 // ESERCIZIO 5 (suggerimento: c'è un solo errore)
 function checkAccessImproved() {
@@ -147,6 +190,11 @@ function checkAccessImproved() {
     }
     checkAccessImproved();
 
+    /*
+1. 
+2. 
+3. 
+*/
 
 
 /*3
@@ -240,3 +288,9 @@ console.log(dieselCars);
 
 console.log('Tutte le altre auto');
 console.log(otherCars);
+
+/*
+1. 
+2. 
+3. 
+*/
