@@ -57,7 +57,7 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 function displayEvenNumbers(array) {
     let evenNumbers = [];
     for (let i = 0; i < array.length - 1; i++) {
-        if (array[i] % 2 == 0); {
+        if (array[i] % 2 == 0) {
             evenNumbers.push(array[i]);
         }
     }
@@ -91,22 +91,25 @@ displayEvenNumbers(numbers); // dovrebbe restituire [2,4,6,8]
 
 
 // ESERCIZIO 1
+let myAge = prompt("Inserire età");
 function checkAge() {
-    const myAge = 32;
-    const message = '';
+    
+   /* const */ let message = '';
 
     if (myAge < 18) {
         message = `Sei troppo giovane! Hai ${myAge} anni!`;
     } else {
         message = 'Hai più di 18 anni!';
     }
+    console.log(message); /*aggiunto*/
 }
 checkAge();
 
 /*
-1. 
+1. il codice controlla l'età datagli e stampa un emessaggio a seconda del risultato
 2. 
-3. 
+3. la costante myAge va messa fuori dalla funzione e va richiesta in qualche modo, con un input o un prompt, altrimenti la funzione avrebbe sempre lo stesso risultato,
+ la variabile message deve essere un let in modo da poter essere riassegnata dopo il check, poi manca il print del messaggio
 */
 
 // ESERCIZIO 2
@@ -123,18 +126,26 @@ printColorsNumber();
 */
 
 // ESERCIZIO 3
-function addNumbers() {
-    const userNumber = prompt('Inserisci un numero');
-    const total = userNumber + 12;
 
+function addNumbers() {
+    /* aggiungo contatore */ 
+    let contatore = prompt("quanti numeri devi sommare?");
+    let userNumber = 0;
+     /* const */ let total = userNumber + 12;
+
+    for (let i = 0; i < contatore; i++)
+    {
+        userNumber = prompt("Inserisci un numero");
+    }
     console.log(`Il risultato finale è ${total}`);
 }
 addNumbers();
 
+
 /*
-1. 
+1. la funzione dovrebbe prendere un tot di numeri in prompt e sommarli, stampando il totale
 2. 
-3. 
+3. la funzione com'è è inutile perchè aggiunge un solo numero al totale, quindi aggiungo un contatore per richiedere quanti numeri sommare, poi total deve essere un let
 */
 
 // ESERCIZIO 4
@@ -157,7 +168,7 @@ function checkAccess() {
 checkAccess();
 
 /*
-1. 
+1. controllo di una mail presente o meno in checklist, con permesso di accesso a seconda dell'esisto del controllo 
 2. 
 3. 
 */
@@ -173,7 +184,7 @@ function checkAccessImproved() {
     for (let i = 0; i < addresses.length; i++) {
         const email = addresses[i];
 
-        if (userEmail.length > 5) {
+        if /*(userEmail.length > 5)*/ (userEmail.includes(`@mail.com`)) {
 
             if (email === userEmail) {
                 grantAccess = 'true';
@@ -188,12 +199,13 @@ function checkAccessImproved() {
             console.log('Accesso negato!');
         }
     }
+}
     checkAccessImproved();
 
     /*
-1. 
-2. 
-3. 
+1. come l'esercizio precedente, ma con un controllo sulla lunghezza del prompt inserito
+2. la funzione mancava di una parentesi graffa
+3. 5 è un numero troppo ridotto per il controllo della mail, dovrebbe essere `@mail.com` almeno quindi lenght > 8 o meglio, un includes di `@mail.com`
 */
 
 
@@ -219,12 +231,12 @@ const cars = [
     {
         manufacturer: 'Ford',
         model: 'Fiesta',
-        type: 'diesel'
+        type: 'Diesel'
     },
     {
         manufacturer: 'Audi',
         model: 'A1',
-        type: 'benzina'
+        type: 'Benzina'
     },
     {
         manufacturer: 'Volkswagen',
@@ -234,7 +246,7 @@ const cars = [
     {
         manufacturer: 'Fiat',
         model: 'Panda',
-        type: 'metano'
+        type: 'Metano'
     },
     {
         manufacturer: 'Fiat',
@@ -244,12 +256,12 @@ const cars = [
     {
         manufacturer: 'Tesla',
         model: 'Model 3',
-        type: 'elettrico'
+        type: 'Elettrico'
     },
     {
         manufacturer: 'Volkswagen',
         model: 'Polo',
-        type: 'benzina'
+        type: 'Benzina'
     },
     {
         manufacturer: 'Ford',
@@ -259,8 +271,8 @@ const cars = [
     {
         manufacturer: 'Seat',
         model: 'Ibiza',
-        type: 'metano'
-    }
+        type: 'Metano'
+    }, /*mancava la virgola*/
     {
         manufacturer: 'Audi',
         model: 'R8',
@@ -268,14 +280,14 @@ const cars = [
     },
 ];
 
-const gasolineCars = cars.filter( (auto) >= auto.type === 'benzina');
+const gasolineCars = cars.filter( (auto) => /*la freccia era sbagliata*/ auto.type === 'Benzina');
 
 const dieselCars = cars.filter( (auto) => {
-    auto.type === 'diesel';
+    auto.type === 'Diesel';
 });
 
 const otherCars = cars.filter( (auto) => {
-    return auto.type !== 'benzina' || auto.type !== 'diesel';
+    return auto.type !== 'Benzina' /*|| è or, a noi serve and*/ && auto.type !== 'Diesel';
 });
 
 console.log('Auto a benzina');
@@ -290,7 +302,8 @@ console.log('Tutte le altre auto');
 console.log(otherCars);
 
 /*
-1. 
-2. 
-3. 
+1. il codice controlla il tipo di motore delle automobili di un array e le stampa secondo tre criteri
+2. mancava una virgola nella dichiarazione degli elementi dell'array, poi per avere un controllo accurato delle proprietà è importante stare attenti a usare sempre
+la stessa sintassi, quindi "benzina" o "diesel" vanno sempre con la maiuscola o sempre senza
+3. a riga 290 serviva un AND nella condizione
 */
